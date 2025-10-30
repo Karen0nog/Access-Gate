@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { LandingPage } from "./components/LandingPage";
 import { NeonButton } from './components/NeonButton';
+import { Step1DateSelection } from "./components/Step1DateSelection";
 
 import "./App.css";
 
 // importações comentadas para os próximos passos do formulário
 const APP_STEPS = {
   LANDING: 0,
-  STEP_1: 1,
-  STEP_2: 2,
-  STEP_3: 3,
-  STEP_4: 4,
+  Step1DateSelection: 1,
+  Step2TableSelection: 2,
+  Step3UserInfo: 3,
+  Step4Payment: 4,
 };
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [reservationData, setReservationData] = useState({});
   // Função para iniciar a reserva, levando ao primeiro passo
   const handleStartReservation = () => {
-    setCurrentStep(APP_STEPS.STEP_1);
+    setCurrentStep(APP_STEPS.Step1DateSelection);
   };
 
   // Função para avançar para a próxima etapa (a ser usada nos componentes de formulário)
@@ -40,14 +41,11 @@ function App() {
       //Passa a função handleStartReservation para que o botão "Começar" funcione.
       case APP_STEPS.LANDING:
         return <LandingPage onStart={handleStartReservation} />;
-      case APP_STEPS.STEP_1:
+      case APP_STEPS.Step1DateSelection:
         return (
           <div>
             <h2>Passo 1: Seleção de Evento</h2>
-            <p>Em breve...</p>
-            <NeonButton onClick={() => setCurrentStep(APP_STEPS.LANDING)}>
-              Voltar
-            </NeonButton>
+            <Step1DateSelection onNext={handleNextStep} onBack={handleBackStep} />
           </div>
         );
     }
@@ -57,7 +55,5 @@ function App() {
     {renderContent()}
     </div>;
 }
-
-// O componente NeonButton é necessário aqui para os placeholders de Step 1-4
 
 export default App;

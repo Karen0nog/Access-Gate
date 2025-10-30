@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+
+import React from "react"; 
+import { useEffect, useState } from "react";
 import { NeonButton } from "./NeonButton";
 
 import feather from "feather-icons";
-import heroImg from "../assets/img/cyberpunk-dj-illustration (1).jpg";
+import heroImg from "../assets/img/cyberpunk-dj-illustration(1).jpg";
 
 import "./LandingPage.css";
 
@@ -13,20 +15,27 @@ export function LandingPage({ onStart }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Atualiza os ícones sempre que os eventos mudam
   useEffect(() => {
-    feather.replace(); // substitui os elementos com data-feather por SVGs
-  }, []);
+    feather.replace(); 
+  }, [events]);
 
   useEffect(() => {
     setLoading(true);
     fetch(API_URL)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Erro na resposta da rede");
+        }
+      return res.json();
+      })
       .then((data) => {
         setEvents(data);
+        setError(null);
         setLoading(false);
       })
       .catch((error) => {
-        setError("Erro ao carregar eventos.");
+        setError(error.message ||"Erro ao carregar eventos.");
         setLoading(false);
       });
   }, []);
@@ -34,7 +43,7 @@ export function LandingPage({ onStart }) {
   return (
     <div className="landing-page">
       <section className="hero">
-        <img src={heroImg} alt="hero-background" className="hero-background" />
+        <img src={heroImg} alt="Ilustração cyberpunk de DJ" className="hero-background" />
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-title neon-glow-cyan">ACCESS GATE</h1>
@@ -75,9 +84,12 @@ export function LandingPage({ onStart }) {
 
       <section className="events">
         <h2 className="title-section neon-glow-magenta">Eventos em Destaque</h2>
+        {/* Exibe loading ou erro */}
+        {loading && <p>Carregando eventos...</p>}
+        {error && <p style={{ color: "var(--destructive)" }}>{error}</p>}
         <div className="events-grid">
-          {events.map((event, index) => (
-            <div className="event-card" key={index}>
+          {events.map((event) => (
+            <div className="event-card" key={event.id || event.title}>
               <div className="event-media">
                 <img src={event.image} alt={event.title} />
                 <span className="event-date">{event.date}</span>

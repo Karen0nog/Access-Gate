@@ -1,0 +1,97 @@
+@import "../styles/global.css";
+@import "../styles/effects.css";
+
+
+.progress-indicator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.progress-step-item {
+  display: flex;
+  align-items: center;
+}
+
+.progress-step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-dark-blue);
+  border: 2px solid var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 0 8px var(--neon-cyan, #00ffff);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.progress-step-line {
+  width: 60px;
+  height: 2px;
+  margin: 0 10px ;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.progress-done {
+  border-color: var(--neon-green);
+  background-color: var(--neon-green);
+  color: var(--bg-dark);
+  box-shadow: 0 0 5px var(--neon-green);
+}
+
+.progress-current {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  animation: pulse-cyan 1.5s infinite;
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.progress-pending {
+  border-color: var(--gray-600);
+  color: var(--gray-600);
+}
+
+.line-done {
+  background-color: var(--neon-green);
+  box-shadow: 0 0 5px var(--neon-green);
+}
+
+.line-pending {
+  background-color: var(--gray-600); 
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .progress-step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  .progress-step-line {
+    width: 36px;
+    margin: 0 6px;
+    height: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .progress-indicator-container {
+    gap: 0.2rem;
+    padding: 0 1rem;
+  }
+  .progress-step-circle {
+    width: 48px;
+    height: 48px;
+    font-size: 0.85rem;
+  }
+  .progress-step-line {
+    width: 16px;
+    margin: 0.5rem;
+    height: 2px;
+  }
+}

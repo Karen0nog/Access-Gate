@@ -2,7 +2,7 @@
   --font-size: 16px;
   
   /* Cyberpunk Neon Colors */
-  --bg-dark: #0A0A0A;
+  --bg-dark: #010524;
   --bg-dark-blue: #00001A;
   --neon-purple: #8A2BE2;
   --neon-cyan: #00FFFF;
@@ -15,7 +15,7 @@
   
   --background: var(--bg-dark);
   --foreground: var(--text-gray);
-  --card: rgba(10, 10, 26, 0.8);
+  --card: rgba(20, 10, 26, 0.8);
   --card-foreground: var(--text-gray);
   --popover: rgba(10, 10, 26, 0.95);
   --popover-foreground: var(--text-gray);
@@ -50,6 +50,7 @@
   --sidebar-accent-foreground: var(--text-gray);
   --sidebar-border: color-mix(in rgba, var(--neon-purple) 30%, transparent);
   --sidebar-ring: var(--neon-cyan);
+  --gray-600: #4b5563;
 }
 
 .dark {
