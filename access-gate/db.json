@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Neon Nights",
+      "date": "15 NOV",
+      "image": "https://images.unsplash.com/photo-1625612446042-afd3fe024131",
+      "description": "Uma noite épica de música eletrônica e visuais cyberpunk"
+    },
+    {
+      "id": 2,
+      "title": "Cyber Saturday",
+      "date": "22 NOV",
+      "image": "https://images.unsplash.com/photo-1692176548571-86138128e36c",
+      "description": "Os melhores DJs internacionais em uma experiência única"
+    },
+    {
+      "id": 3,
+      "title": "Synthwave Festival",
+      "date": "30 NOV",
+      "image": "https://images.unsplash.com/photo-1662012061995-0cd4a7ef2d12",
+      "description": "Festival de synthwave com artistas do mundo inteiro"
+    }
+  ]
+}
