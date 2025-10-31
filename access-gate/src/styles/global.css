@@ -53,42 +53,6 @@
   --gray-600: #4b5563;
 }
 
-.dark {
-  --background: rgb(10, 10, 10);
-  --foreground: rgb(250, 250, 250);
-  --card: rgb(10, 10, 10);
-  --card-foreground: rgb(250, 250, 250);
-  --popover: rgb(10, 10, 10);
-  --popover-foreground: rgb(250, 250, 250);
-  --primary: rgb(250, 250, 250);
-  --primary-foreground: rgb(10, 10, 10);
-  --secondary: rgb(10, 10, 10);
-  --secondary-foreground: rgb(250, 250, 250);
-  --muted: rgb(10, 10, 10);
-  --muted-foreground: rgb(250, 250, 250);
-  --accent: rgb(138, 43, 226);
-  --accent-foreground: rgb(250, 250, 250);
-  --destructive: rgb(255, 0, 0);
-  --destructive-foreground: rgb(250, 250, 250);
-  --border: rgb(138, 43, 226);
-  --input: rgb(38, 38, 38);
-  --ring: rgb(112, 112, 112);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: rgb(124, 31, 264);
-  --chart-2: rgb(177, 43, 162);
-  --chart-3: rgb(196, 48, 70);
-  --chart-4: rgb(160, 45, 303);
-  --chart-5: rgb(165, 62, 16);
-  --sidebar: rgb(52, 52, 52);
-  --sidebar-foreground: rgb(250, 250, 250);
-  --sidebar-primary: rgb(124, 31, 264);
-  --sidebar-primary-foreground: rgb(10, 10, 10);
-  --sidebar-accent: rgb(38, 38, 38);
-  --sidebar-accent-foreground: rgb(250, 250, 250);
-  --sidebar-border: rgb(38, 38, 38);
-  --sidebar-ring: rgb(112, 112, 112);
-}
 
 * {
   box-sizing: border-box;
@@ -145,4 +109,10 @@ input {
 label,
 button {
   font-weight: var(--font-weight-medium);
+}
+
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }

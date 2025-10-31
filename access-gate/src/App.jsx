@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { LandingPage } from "./components/LandingPage";
-import { NeonButton } from './components/NeonButton';
+import { NeonButton } from "./components/NeonButton";
 import { Step1DateSelection } from "./components/Step1DateSelection";
+import { Step2TableSelection } from "./components/Step2TableSelection";
 
 import "./App.css";
 
@@ -43,17 +44,16 @@ function App() {
         return <LandingPage onStart={handleStartReservation} />;
       case APP_STEPS.Step1DateSelection:
         return (
-          <div>
-            <h2>Passo 1: Seleção de Evento</h2>
-            <Step1DateSelection onNext={handleNextStep} onBack={handleBackStep} />
-          </div>
+          <Step1DateSelection onNext={handleNextStep} onBack={handleBackStep} />
         );
+        case APP_STEPS.Step2TableSelection:
+          return (
+            <Step2TableSelection onNext={handleNextStep} onBack={handleBackStep} selectedDate={reservationData.date} />
+          );
     }
   };
 
-  return <div id="vip-grip-app">
-    {renderContent()}
-    </div>;
+  return <div id="access-gate-app">{renderContent()}</div>;
 }
 
 export default App;

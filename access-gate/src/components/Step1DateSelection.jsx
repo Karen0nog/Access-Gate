@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { NeonButton } from "./NeonButton";
 import { ProgressIndicator } from "./ProgressIndicator";
 
 import "./Step1DateSelection.css";
 
-const Calendar = ({ date, setDate }) => {
+const API_URL = "http://localhost:5000/dates";
+
+const Calendar = ({ date, setDate, availableDates }) => {
   const days = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
-  const firstDayOfMonth = 3; // Outubro 2025 começa na quarta-feira
-  // Índice do primeiro dia do mês (0=domingo, 1=segunda, ...). Aqui, 3=quarta-feira.
   const daysInMonth = 31;
   const totalCells = 6 * 7; // 6 semanas, 7 dias por semana
   const cells = []; // Array para armazenar as células do calendário
@@ -28,6 +28,9 @@ const Calendar = ({ date, setDate }) => {
   // Garante que só haverá 42 células (6 semanas).
   const calendarDays = cells.slice(0, totalCells);
 
+  // Extrai os dias disponíveis como números
+  const availableDays = availableDates.map((d) => new Date(d).getDate());
+
   return (
     <div className="calendar">
       <div className="calendar-header">
@@ -41,30 +44,55 @@ const Calendar = ({ date, setDate }) => {
             {day}
           </div>
         ))}
-        {calendarDays.map((cell, index) => (
-          <div
-            key={index}
-            className={`calendar-day ${
-              cell.type === "outside" ? "day-outside" : ""
-            } ${
-              cell.type === "current" && date && date.getDate() === cell.num
-                ? "day-selected"
-                : ""
-            }`}
-            onClick={() =>
-              cell.type === "current" && setDate(new Date(2025, 9, cell.num))
-            }
-          >
-            {cell.num}
-          </div>
-        ))}
+        {calendarDays.map((cell, index) => {
+          const isAvailable =
+            cell.type === "current" && availableDays.includes(cell.num);
+
+          const isSelected =
+            cell.type === "current" &&
+            date &&
+            date.getDate() === cell.num &&
+            isAvailable;
+
+          return (
+            <div
+              key={index}
+              className={`calendar-day day-grey ${
+                isAvailable ? "day-available" : ""
+              } ${isSelected ? "day-selected" : ""} ${
+                cell.type === "outside" ? "day-outside" : ""
+              }`}
+              onClick={() =>
+                isAvailable ? setDate(new Date(2025, 9, cell.num)) : undefined
+              }
+            >
+              {cell.num}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export function Step1DateSelection({ onNext, onBack }) {
-  const [date, setDate] = useState(new Date(2025, 9, 31));
+  const [date, setDate] = useState(null);
+  const [availableDates, setAvailableDates] = useState([]);
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        const onlyAvailable = data
+          .filter((d) => d.available)
+          .map((d) => d.date);
+        setAvailableDates(onlyAvailable);
+      })
+      .catch((err) => {
+        console.error("Erro ao buscar datas disponíveis:", err);
+        setAvailableDates([]);
+      });
+  }, []);
 
   const handleNext = () => {
     if (date) {
@@ -74,11 +102,10 @@ export function Step1DateSelection({ onNext, onBack }) {
 
   return (
     <div className="step-selection-container">
-        <h1 className="hero-title neon-glow-cyan">Access Gate</h1>
-        <div className="header-system-title">Sistema de Reservas</div>
-        <ProgressIndicator currentStep={1} totalSteps={4} />
+      <h1 className="hero-title neon-glow-cyan">Access Gate</h1>
+      <div className="header-system-title">Sistema de Reservas</div>
+      <ProgressIndicator currentStep={1} totalSteps={4} />
       <div className="frosted-glass">
-
         <div className="selection-content">
           <h2 className="selection-title neon-glow-magenta">
             Select: Ingresso ao setor
@@ -89,7 +116,11 @@ export function Step1DateSelection({ onNext, onBack }) {
             </div>
             <div className="calendar-wrapper">
               <div className="calendar-box">
-                <Calendar date={date} setDate={setDate} />
+                <Calendar
+                  date={date}
+                  setDate={setDate}
+                  availableDates={availableDates}
+                />
               </div>
             </div>
             {date && (
@@ -100,10 +131,10 @@ export function Step1DateSelection({ onNext, onBack }) {
           </div>
 
           <div className="actions-container">
-            <NeonButton variant="purple" onClick={onBack}>
+            <NeonButton onClick={onBack}>
               ← Voltar
             </NeonButton>
-            <NeonButton variant="cyan" onClick={handleNext} disabled={!date}>
+            <NeonButton onClick={handleNext} disabled={!date}>
               Próximo →
             </NeonButton>
           </div>
@@ -112,4 +143,3 @@ export function Step1DateSelection({ onNext, onBack }) {
     </div>
   );
 }
-

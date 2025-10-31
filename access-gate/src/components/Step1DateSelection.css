@@ -19,28 +19,44 @@
   display: flex;
   flex-direction: column;
   min-width: 350px;
-  max-width: 400px;
+  max-width: 1200px;
   width: 100%;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--neon-cyan, #00ffff);
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--neon-cyan, #00ffff33);
 }
 
 .header-system-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
-  margin: 16px 0;
+  margin: 12px 0;
+  color: var(--neon-purple, #a020f0);
+  text-shadow: 0 0 8px var(--neon-purple, #a020f033);
+  font-weight: 600;
 }
 
 .selection-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  align-items: center;
+}
+.selected-date-display {
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selection-title {
@@ -97,7 +113,7 @@
 
 .uppercase {
   text-transform: uppercase;
-  color: #fff;
+  color: var(--destructive-foreground);
 }
 
 .calendar-grid {
@@ -133,8 +149,23 @@
 }
 
 .day-outside {
-  color: var(--gray-600);
+  color: var(--neon-cyan);
   cursor: default;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.day-grey {
+  background: var(--gray-600);
+}
+
+.day-available {
+  background: var(--neon-cyan);
 }
 
 .day-selected {
@@ -142,20 +173,11 @@
   color: #18181b;
   font-weight: bold;
   box-shadow: 0 0 8px var(--neon-green, #39ff14);
+  border: 2px solid var(--neon-green);
 }
 
-.selected-date-display {
-  text-align: center;
-  color: var(--neon-green, #39ff14);
-  text-shadow: 0 0 5px var(--neon-green, #39ff14), 0 0 10px rgba(0, 255, 0, 0.4);
-  margin-top: 2rem;
-}
-
-.actions-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 24px;
+.day-outside {
+  opacity: 0.3;
 }
 
 /* --- Responsividade --- */
@@ -196,7 +218,10 @@
     margin: 10px 0;
   }
   .selection-content {
-    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
   }
   .selection-title {
     font-size: 1rem;
@@ -234,6 +259,9 @@
   .selected-date-display {
     font-size: 0.85rem;
     margin-top: 0.4rem;
+    text-align: center;
+    justify-content: center;
+
   }
   .actions-container {
     flex-direction: column;

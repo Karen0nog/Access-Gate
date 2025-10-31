@@ -128,9 +128,9 @@ export function LandingPage({ onStart }) {
           <div className="footer-col">
             <h3 className="neon-glow-purple">Horário</h3>
             <p>
-              Sexta: 23h - 6h
+              Segunda à Sexta: 22h - 5h
               <br />
-              Sábado: 23h - 6h
+              Sábado: 22h - 6h
               <br />
               Domingo: Eventos Especiais
             </p>
