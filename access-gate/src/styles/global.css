@@ -1,0 +1,118 @@
+:root {
+  --font-size: 16px;
+  
+  /* Cyberpunk Neon Colors */
+  --bg-dark: #010524;
+  --bg-dark-blue: #00001A;
+  --neon-purple: #8A2BE2;
+  --neon-cyan: #00FFFF;
+  --neon-magenta: #FF00FF;
+  --neon-yellow: #FFFF00;
+  --neon-pink: #FF1493;
+  --neon-green: #00FF00;
+  --neon-red: #FF0000;
+  --text-gray: #D3D3D3;
+  
+  --background: var(--bg-dark);
+  --foreground: var(--text-gray);
+  --card: rgba(20, 10, 26, 0.8);
+  --card-foreground: var(--text-gray);
+  --popover: rgba(10, 10, 26, 0.95);
+  --popover-foreground: var(--text-gray);
+  --primary: var(--neon-cyan);
+  --primary-foreground: var(--bg-dark);
+  --secondary: var(--neon-purple);
+  --secondary-foreground: var(--text-gray);
+  --muted: rgba(138, 43, 226, 0.2);
+  --muted-foreground: var(--text-gray);
+  --accent: var(--neon-magenta);
+  --accent-foreground: var(--bg-dark);
+  --destructive: var(--neon-red);
+  --destructive-foreground: #ffffff;
+  --border: color-mix(in rgba, var(--neon-cyan) 50%, transparent);
+  --input: transparent;
+  --input-background: rgba(0, 255, 255, 0.05);
+  --switch-background: rgba(138, 43, 226, 0.3);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--neon-cyan);
+  --chart-1: var(--neon-purple);
+  --chart-2: var(--neon-cyan);
+  --chart-3: var(--neon-magenta);
+  --chart-4: var(--neon-yellow);
+  --chart-5: var(--neon-pink);
+  --radius: 0.5rem;
+  --sidebar: var(--bg-dark);
+  --sidebar-foreground: var(--text-gray);
+  --sidebar-primary: var(--neon-cyan);
+  --sidebar-primary-foreground: var(--bg-dark);
+  --sidebar-accent: rgba(138, 43, 226, 0.2);
+  --sidebar-accent-foreground: var(--text-gray);
+  --sidebar-border: color-mix(in rgba, var(--neon-purple) 30%, transparent);
+  --sidebar-ring: var(--neon-cyan);
+  --gray-600: #4b5563;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Audiowide", "Orbitron", "Share Tech Mono", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Share Tech Mono", monospace;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+p,
+label,
+button,
+input {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+p,
+input {
+  font-weight: var(--font-weight-normal);
+}
+
+label,
+button {
+  font-weight: var(--font-weight-medium);
+}
+
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}

@@ -1,0 +1,75 @@
+{
+  "dates": [
+    { "date": "2025-10-11", "available": true, "eventId": 1 },
+    { "date": "2025-10-18", "available": true, "eventId": 2 },
+    { "date": "2025-10-25", "available": true, "eventId": 3 }
+  ],
+  "tables": [
+    {
+      "id": 1,
+      "name": "Mesa Neon Prime",
+      "availableDates": ["2025-10-11"],
+      "description": "Mesa VIP com vista frontal do palco, sofá acolchoado, atendimento personalizado e acesso exclusivo ao lounge.",
+      "chairs": 4,
+      "drinks": [
+        "1 garrafa de vodka importada",
+        "4 energéticos",
+        "1 balde de gelo",
+        "água com gás"
+      ],
+      "price": 1200.00
+    },
+    {
+      "id": 2,
+      "name": "Mesa CyberLounge",
+      "availableDates": ["2025-10-18"],
+      "description": "Mesa VIP lateral com visão panorâmica, decoração temática cyberpunk, serviço premium e entrada prioritária.",
+      "chairs": 6,
+      "drinks": [
+        "1 garrafa de whisky 12 anos",
+        "6 refrigerantes variados",
+        "1 balde de gelo",
+        "água mineral"
+      ],
+      "price": 1500.00
+    },
+    {
+      "id": 3,
+      "name": "Mesa Skyline X",
+      "availableDates": ["2025-10-25"],
+      "description": "Mesa VIP elevada com visão ampla do festival, iluminação personalizada, garçom exclusivo e brindes especiais.",
+      "chairs": 8,
+      "drinks": [
+        "2 garrafas de gin premium",
+        "8 tônicas",
+        "1 balde de gelo",
+        "água saborizada"
+      ],
+      "price": 1800.00
+
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Neon Nights",
+      "date": "11 OUT",
+      "image": "https://images.unsplash.com/photo-1625612446042-afd3fe024131",
+      "description": "Uma noite épica de música eletrônica e visuais cyberpunk"
+    },
+    {
+      "id": 2,
+      "title": "Cyber Saturday",
+      "date": "18 OUT",
+      "image": "https://images.unsplash.com/photo-1692176548571-86138128e36c",
+      "description": "Os melhores DJs internacionais em uma experiência única"
+    },
+    {
+      "id": 3,
+      "title": "Synthwave Festival",
+      "date": "25 OUT",
+      "image": "https://images.unsplash.com/photo-1662012061995-0cd4a7ef2d12",
+      "description": "Festival de synthwave com artistas do mundo inteiro"
+    }
+  ]
+}
