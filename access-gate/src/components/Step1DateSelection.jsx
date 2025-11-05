@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { NeonButton } from "./NeonButton";
 import { ProgressIndicator } from "./ProgressIndicator";
 
+import data from "../data/db.json";
+
 import "./Step1DateSelection.css";
 
 const API_URL = "http://localhost:5000/dates";
@@ -80,18 +82,13 @@ export function Step1DateSelection({ onNext, onBack }) {
   const [availableDates, setAvailableDates] = useState([]);
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        const onlyAvailable = data
-          .filter((d) => d.available)
-          .map((d) => d.date);
-        setAvailableDates(onlyAvailable);
-      })
-      .catch((err) => {
-        console.error("Erro ao buscar datas disponíveis:", err);
-        setAvailableDates([]);
-      });
+   try {
+    const onlyAvailable = data.dates.filter((d) => d.available).map((d) => d.date);
+    setAvailableDates(onlyAvailable);
+   } catch (error) {
+    console.error("Erro ao carregar datas disponíveis:", error);
+    setAvailableDates([]);
+   }
   }, []);
 
   const handleNext = () => {

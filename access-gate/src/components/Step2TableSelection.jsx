@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+import data from "../data/db.json";
+
 import { NeonButton } from "./NeonButton";
 import { ProgressIndicator } from "./ProgressIndicator";
 
 import "./Step2TableSelection.css";
-
-const API_URL = "http://localhost:5000/tables";
 
 export const Step2TableSelection = ({ onNext, onBack, selectedDate }) => {
   const [selectedTable, setSelectedTable] = useState(null);
@@ -18,15 +18,12 @@ export const Step2TableSelection = ({ onNext, onBack, selectedDate }) => {
   };
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setTables(data);
-      })
-      .catch((err) => {
-        console.error("Erro ao buscar mesas disponíveis:", err);
-        setTables([]);
-      });
+    try {
+      setTables(data.tables);
+    } catch (error) {
+      console.error("Erro ao carregar mesas:", error);
+      setTables([]);
+    }
   }, []);
 
   return (
@@ -42,7 +39,10 @@ export const Step2TableSelection = ({ onNext, onBack, selectedDate }) => {
                 Select: Selecionar Mesa VIP
               </h2>
               <div className="selected-date-display">
-                Data selecionada: {selectedDate ? selectedDate.toLocaleDateString("pt-BR") : "Nenhuma data selecionada"}
+                Data selecionada:{" "}
+                {selectedDate
+                  ? selectedDate.toLocaleDateString("pt-BR")
+                  : "Nenhuma data selecionada"}
               </div>
             </div>
             <div className="details-box">
@@ -82,9 +82,9 @@ export const Step2TableSelection = ({ onNext, onBack, selectedDate }) => {
 
             <div className="actions-container">
               <NeonButton onClick={onBack}>← Voltar</NeonButton>
-              <NeonButton onClick={handleNext} disabled={!selectedTable}>
+              {/* <NeonButton onClick={handleNext} disabled={!selectedTable}>
                 Próximo →
-              </NeonButton>
+              </NeonButton> */}
             </div>
           </div>
         </div>

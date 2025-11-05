@@ -17,7 +17,7 @@
         "1 balde de gelo",
         "água com gás"
       ],
-      "price": 1200.00
+      "price": 1200.0
     },
     {
       "id": 2,
@@ -31,7 +31,7 @@
         "1 balde de gelo",
         "água mineral"
       ],
-      "price": 1500.00
+      "price": 1500.0
     },
     {
       "id": 3,
@@ -45,8 +45,7 @@
         "1 balde de gelo",
         "água saborizada"
       ],
-      "price": 1800.00
-
+      "price": 1800.0
     }
   ],
   "events": [
@@ -55,21 +54,21 @@
       "title": "Neon Nights",
       "date": "11 OUT",
       "image": "https://images.unsplash.com/photo-1625612446042-afd3fe024131",
-      "description": "Uma noite épica de música eletrônica e visuais cyberpunk"
+      "description": "Uma noite épica de música eletrônica e visuais cyberpunk. Line-up: DJ Skyline, LunarBass e EchoDrive. Prepare-se para uma noite onde o som transcende o espaço, com projeções holográficas, efeitos de luz sincronizados e uma pista que pulsa no ritmo da revolução sonora."
     },
     {
       "id": 2,
       "title": "Cyber Saturday",
       "date": "18 OUT",
       "image": "https://images.unsplash.com/photo-1692176548571-86138128e36c",
-      "description": "Os melhores DJs internacionais em uma experiência única"
+      "description": "Os melhores DJs internacionais em uma experiência única. Line-up: DJ Orion, LunaWave e BassMatrix. Prepare-se para uma noite onde o som transcende fronteiras, com performances eletrizantes, visuais imersivos e uma produção de tirar o fôlego."
     },
     {
       "id": 3,
       "title": "Synthwave Festival",
       "date": "25 OUT",
       "image": "https://images.unsplash.com/photo-1662012061995-0cd4a7ef2d12",
-      "description": "Festival de synthwave com artistas do mundo inteiro"
+      "description": "Festival de synthwave com artistas do mundo inteiro. Line-up: RetroNova, LaserDream e Midnight Circuit. Prepare-se para uma jornada sonora que mistura nostalgia e inovação, com sintetizadores pulsantes, visuais neon e atmosferas imersivas."
     }
   ]
 }

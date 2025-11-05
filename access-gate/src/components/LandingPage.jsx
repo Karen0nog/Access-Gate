@@ -1,7 +1,8 @@
-
-import React from "react"; 
+import React from "react";
 import { useEffect, useState } from "react";
 import { NeonButton } from "./NeonButton";
+
+import data from "../data/db.json";
 
 import feather from "feather-icons";
 import heroImg from "../assets/img/cyberpunk-dj-illustration(1).jpg";
@@ -17,33 +18,29 @@ export function LandingPage({ onStart }) {
 
   // Atualiza os ícones sempre que os eventos mudam
   useEffect(() => {
-    feather.replace(); 
+    feather.replace();
   }, [events]);
 
   useEffect(() => {
     setLoading(true);
-    fetch(API_URL)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Erro na resposta da rede");
-        }
-      return res.json();
-      })
-      .then((data) => {
-        setEvents(data);
-        setError(null);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message ||"Erro ao carregar eventos.");
-        setLoading(false);
-      });
+    try {
+      setEvents(data.events);
+      setError(null);
+    } catch (error) {
+      setError("Erro ao carregar eventos.");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   return (
     <div className="landing-page">
       <section className="hero">
-        <img src={heroImg} alt="Ilustração cyberpunk de DJ" className="hero-background" />
+        <img
+          src={heroImg}
+          alt="Ilustração cyberpunk de DJ"
+          className="hero-background"
+        />
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-title neon-glow-cyan">ACCESS GATE</h1>
